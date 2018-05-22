@@ -77,17 +77,30 @@ index = random.randint(0, len(surnameList) - 1)
 
 
 def get_surname():
-    surname = surnameList[index]
+    # 使用均匀分布,组成正太分布,给姓氏加权重
+    rand_a = random.randint(0, 10)
+    rand_b = random.randint(0, 10)
+    if rand_a + rand_b > 15:
+        weight_index = random.randint(0, 80)
+        surname = surnameList[weight_index]
+    elif rand_a + rand_b > 9:
+        weight_index = random.randint(0, 30)
+        surname = surnameList[weight_index]
+    else:
+        surname = surnameList[index]
     return surname
 
 
+# 字符集有问题待优化
 def get_name():
     name = random.randint(0x4e00, 0x9fbf)
     second_word = random.randint(0x4e00, 0x9fbf)
-    if index % 2 == 0:
+    if random.randint(0, 1) == 1:
         return chr(name)
     else:
         return chr(name + second_word)
 
 
-print("{}{}".format(get_surname(), get_name()))
+if __name__ == "__main__":
+    for i in range(0, 10):
+        print("{}{}".format(get_surname(), get_name()))
