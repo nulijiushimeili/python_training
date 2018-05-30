@@ -194,3 +194,42 @@ print(arr)
 print(arr[[4, 5, 2, 1]])
 # 使用负数索引将从末尾开始选取
 print(arr[[-2, -3, -4]])
+
+arr = np.arange(32).reshape((8, 4))
+print(arr)
+# 获取矩阵单位元上的元素
+print(arr[[1, 5, 7, 2], [0, 3, 1, 2]])
+# [ 4 23 29 10]
+# 选取矩阵的行列子集
+print(arr[[1, 5, 7, 2]][:, [0, 3, 1, 2]])
+# 另一种获取矩阵上的行列子集
+print(arr[np.ix_([0, 1, 2], [0, 1, 2])])
+# [[ 0  1  2]
+#  [ 4  5  6]
+#  [ 8  9 10]]
+
+arr = np.arange(10)
+# 开方
+print(np.sqrt(arr))
+# exp() 表示计算e**x,e是自然常数,e=2.71828
+print(np.exp(arr))
+
+# 使用数组对数据进行处理
+# 用数组表达形式代替循环的做法通常被称为是矢量化.
+# np的数组用于计算比纯python写的代码要快不止一个数量级
+# 假设我们要在一组值(网格型)上计算函数sqrt(x**2 + y**2),
+# np.meshgrid函数接受两个一维数组,并产生两个二维矩阵
+# (对应于两个数组中所有的(x,y)对)
+points = np.arange(-5, 5, 0.01)  # 1000个间隔相等的点
+# xs,ys = np.meshgrid(x,y) 表示从参数中返回坐标矩阵
+xs, ys = np.meshgrid(points, points)
+print(xs, ys)
+import matplotlib.pyplot as plt
+
+z = np.sqrt(xs ** 2, ys ** 2)
+print(z)
+plt.imshow(z, cmap=plt.cm.gray)
+plt.colorbar()
+
+plt.title("Image plot of $\sqrt{x^2+y^2}$ for a grid of values")
+plt.show()
