@@ -4,6 +4,7 @@ from pyspark.sql import SparkSession
 # pyspark test
 # RDD
 # Python怎么反应这么慢,如果数据量不是特别大的话,还是pandas吧
+
 # 创建sparkconf 对象
 conf = SparkConf().setAppName("Test Spark").setMaster("local")
 # 创建sparkcontext对象
