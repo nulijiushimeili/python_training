@@ -2,6 +2,11 @@ import requests
 from xml.parsers.expat import ParserCreate
 
 
+# Sax处理的标准格式:
+# start_element()
+# end_element()
+# char_data()
+# 需要实现这三个函数
 class DefaultSaxHandler(object):
     def __init__(self, provinces):
         self.provinces = provinces
@@ -51,5 +56,6 @@ def get_province_entry(url):
     return provinces
 
 
-provinces = get_province_entry("http://www.ip138.com/post/")
-print(provinces)
+if __name__ == "__main__":
+    provinces = get_province_entry("http://www.ip138.com/post/")
+    print(provinces)
