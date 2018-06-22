@@ -30,3 +30,9 @@ print(type(z))
 # 使用set可以快速对list中的元素进行去重
 l = [2, 3, 4, 5, 5, 6, 2, 6, 7]
 print(list(set(l)))
+
+s = "hello"
+ll = set()
+for ch in s:
+    ll.add(ch)
+print(set(ll))

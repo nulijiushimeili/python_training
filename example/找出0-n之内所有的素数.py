@@ -10,7 +10,7 @@ def prime(n):
     number[0] = False
     number[1] = False
     for i in range(2, int(math.sqrt(n)), 1):
-        for j in range(i * i, n, i):
+        for j in range(i ** 2, n, i):
             number[j] = False
     for i in range(0, n, 1):
         if number[i]:
